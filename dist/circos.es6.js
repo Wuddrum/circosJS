@@ -25232,6 +25232,10 @@ var defaultConf = (0, _assign2.default)({
   backgrounds: {
     value: [],
     iteratee: false
+  },
+  filter: {
+    value: undefined,
+    iteratee: false
   }
 }, _configs.axes, _configs.radial, _configs.common, _configs.values);
 
@@ -25306,6 +25310,10 @@ var Line = function (_Track) {
 
       if (conf.fill) {
         selection.attr('fill', conf.fillColor);
+      }
+
+      if (conf.filter) {
+        selection.style('filter', conf.filter);
       }
 
       return selection;

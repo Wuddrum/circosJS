@@ -34,7 +34,11 @@ const defaultConf = assign({
   backgrounds: {
     value: [],
     iteratee: false
-  }
+  },
+  filter: {
+	  value: undefined,
+	  iteratee: false
+  },
 }, axes, radial, common, values)
 
 const splitByGap = (points, maxGap) => {
@@ -107,6 +111,8 @@ export default class Line extends Track {
         .attr('fill', 'none')
 
     if (conf.fill) { selection.attr('fill', conf.fillColor) }
+	
+	if (conf.filter) { selection.style('filter', conf.filter) }
 
     return selection
   }
