@@ -7742,7 +7742,8 @@ __webpack_require__(451);
 
 function registerTooltip(track, instance, element, trackParams) {
   track.dispatch.on('mouseover', function (d) {
-    instance.tip.html(trackParams.tooltipContent(d)).transition().style('opacity', 0.9).style('left', _d3Selection.event.pageX + 'px').style('top', _d3Selection.event.pageY - 28 + 'px');
+    var elementBounds = element._parents[0].getBoundingClientRect();
+    instance.tip.html(trackParams.tooltipContent(d)).transition().style('opacity', 0.9).style('left', elementBounds.right + 8 + 'px').style('top', elementBounds.top + 8 + 'px');
   });
 
   track.dispatch.on('mouseout', function (d) {

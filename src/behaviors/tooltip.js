@@ -5,12 +5,13 @@ import './tooltip.css'
 
 export function registerTooltip (track, instance, element, trackParams) {
   track.dispatch.on('mouseover', (d) => {
+    const elementBounds = element._parents[0].getBoundingClientRect()
     instance.tip
       .html(trackParams.tooltipContent(d))
       .transition()
       .style('opacity', 0.9)
-      .style('left', (event.pageX) + 'px')
-      .style('top', (event.pageY - 28) + 'px')
+      .style('left', (elementBounds.right + 8) + 'px')
+      .style('top', (elementBounds.top + 8) + 'px')
   })
 
   track.dispatch.on('mouseout', (d) => {
